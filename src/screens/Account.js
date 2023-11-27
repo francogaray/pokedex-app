@@ -5,6 +5,7 @@ export default function Account() {
   return (
     <View>
       <Text>Account</Text>
+      <Text>Account</Text>
     </View>
   )
 }

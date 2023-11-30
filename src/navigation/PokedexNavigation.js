@@ -9,13 +9,13 @@ export default function PokedexNavigation() {
     return (
         <Stack.Navigator>
             <Stack.Screen
-                name="Pokemom"
-                component={PokemonScreen}
+                name="PokedexChild"
+                component={PokedexScreen}
                 options={{ headerShown: false }}
             />
             <Stack.Screen
-                name="PokedexChild"
-                component={PokedexScreen}
+                name="Pokemom"
+                component={PokemonScreen}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>

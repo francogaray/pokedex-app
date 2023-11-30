@@ -19,7 +19,6 @@ export default function PokemonCard(props) {
         console.log(`Vamos al Pokemon: ${pokemon.name}`);
     };
 
-    console.log(JSON.stringify(pokemon, null, 2));
     return (
         <TouchableWithoutFeedback onPress={goToPokemon}>
             <View style={styles.card}>

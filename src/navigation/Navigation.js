@@ -26,7 +26,7 @@ export default function Navigation() {
                 name="Pokedex"
                 component={PokedexNavigation}
                 options={{
-                    headerTitle: "Pokedex",
+                    headerTitle: "",
                     tabBarLabel: "",
                     tabBarIcon: () => <RenderPokeball />,
                 }}

@@ -29,6 +29,7 @@ export default function Navigation() {
                     headerTitle: "",
                     tabBarLabel: "",
                     tabBarIcon: () => <RenderPokeball />,
+                    headerShown: false,
                 }}
             />
             <Tab.Screen

@@ -13,7 +13,6 @@ export default function PokemonList(props) {
         loadPokemons();
     };
 
-    console.log(Platform.OS);
     return (
         <FlatList
             data={pokemons}

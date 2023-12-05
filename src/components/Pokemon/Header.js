@@ -21,7 +21,6 @@ export default function Header(props) {
                 <View style={styles.contentImg}>
                     <Image source={{ uri: image }} style={styles.image} />
                 </View>
-                <Text>Header</Text>
             </SafeAreaView>
         </>
     );

@@ -1,9 +1,25 @@
 import { StyleSheet, Text, View, Button } from "react-native";
-import React from "react";
+import React, { useState, useCallback } from "react";
+import { useFocusEffect, usec } from "@react-navigation/native";
+import { size } from "lodash";
 import useAuth from "../../hooks/useAuth";
-
+import { getPokemonsFavoritesApi } from "../../api/favorite";
 const UserData = () => {
     const { auth, logout } = useAuth();
+    const [total, setTotal] = useState(7);
+
+    useFocusEffect(
+        useCallback(() => {
+            (async () => {
+                try {
+                    const response = await getPokemonsFavoritesApi();
+                    setTotal(size(response));
+                } catch (error) {
+                    throw error;
+                }
+            })();
+        }, [])
+    );
 
     return (
         <View style={styles.content}>
@@ -20,9 +36,13 @@ const UserData = () => {
                 />
                 <ItemMenu title="Username" text={`${auth.username}`} />
                 <ItemMenu title="Email" text={`${auth.email}`} />
-                <ItemMenu title="Total favoritos" text={`0 pokemons`} />
+                <ItemMenu title="Total favoritos" text={`${total} pokemons`} />
             </View>
-            <Button title="Desconectarse" onPress={logout} style={styles.btnLogout} />
+            <Button
+                title="Desconectarse"
+                onPress={logout}
+                style={styles.btnLogout}
+            />
         </View>
     );
 };
@@ -55,11 +75,11 @@ const styles = StyleSheet.create({
     dataContent: {
         marginBottom: 20,
     },
-    itemMenu:{
+    itemMenu: {
         flexDirection: "row",
         paddingVertical: 20,
         borderBottomWidth: 1,
-        borderColor: "#cfcfcf"
+        borderColor: "#cfcfcf",
     },
     itemTitle: {
         fontWeight: "bold",
@@ -67,7 +87,6 @@ const styles = StyleSheet.create({
         width: 120,
     },
     btnLogout: {
-        paddingTop:20,
+        paddingTop: 20,
     },
-
 });

@@ -4,6 +4,7 @@ import useAuth from "../hooks/useAuth";
 import { getPokemonsFavoritesApi } from "../api/favorite";
 import { getPokemonDetailsApi } from "../api/pokemon";
 import PokemonList from "../components/PokemonList";
+import NoLogged from "../components/NoLogged";
 
 export default function Favorite() {
     const { auth } = useAuth();
@@ -27,14 +28,10 @@ export default function Favorite() {
                             .front_default,
                     });
                 }
-                setPokemons(pokemonsArray)
+                setPokemons(pokemonsArray);
             })();
         }
     }, [auth, pokemons]);
 
-    return !auth ? (
-        <Text>Usuario no logeado</Text>
-    ) : (
-        <PokemonList pokemons={pokemons} />
-        );
+    return !auth ? <NoLogged /> : <PokemonList pokemons={pokemons} />;
 }

@@ -9,7 +9,6 @@ import NoLogged from "../components/NoLogged";
 export default function Favorite() {
     const { auth } = useAuth();
     const [pokemons, setPokemons] = useState([]);
-    console.log(pokemons);
 
     useEffect(() => {
         if (auth) {

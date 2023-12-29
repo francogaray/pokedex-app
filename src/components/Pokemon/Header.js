@@ -3,7 +3,6 @@ import React from "react";
 import getColorBypokemonType from "../../utils/getColorByPokemonType";
 
 export default function Header(props) {
-    console.log(props);
 
     const { name, order, image, type } = props;
     const color = getColorBypokemonType(type);

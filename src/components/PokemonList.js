@@ -8,7 +8,7 @@ import React from "react";
 import PokemonCard from "./PokemonCard";
 
 export default function PokemonList(props) {
-    const { pokemons, loadPokemons, isNext } = props;
+    const { pokemons, loadPokemons, isNext, isLoading } = props;
     const loadMore = () => {
         loadPokemons();
     };
@@ -21,9 +21,10 @@ export default function PokemonList(props) {
             keyExtractor={(pokemon) => String(pokemon.id)}
             renderItem={({ item }) => <PokemonCard pokemon={item} />}
             contentContainerStyle={styles.flatListContentContainer}
-            onEndReached={isNext && loadMore}
+            onEndReached={!isLoading && isNext && loadMore}
             onEndReachedThreshold={0.1}
             ListFooterComponent={
+                isLoading &&
                 isNext && (
                     <ActivityIndicator size="large" style={styles.spinner} />
                 )

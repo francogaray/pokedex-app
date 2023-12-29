@@ -25,12 +25,9 @@ const LoginForm = () => {
         onSubmit: (data) => {
             setError("");
             const { username, password } = data;
-            console.log("Formulario enviado...", data);
             if (username !== user.username || password !== user.password) {
-                console.log("El usuario o la contraseña no son correctos...");
                 setError("El usuario o la contraseña no son correctos...");
             } else {
-                console.log("Login correcto...");
                 login(userDetails);
             }
         },
